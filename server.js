@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 //Connect to mongoose
-const MONGODB_URI = mongolab-acute-02616 || 
+const MONGODB_URI = process.env.MONGODB_URI || 
                   "mongodb://localhost/mongoHeadlines";
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
@@ -35,6 +35,10 @@ app.set("view engine", "handlebars");
 // var scraped = [];
 
 //ROUTES
+app.get("/", function(req, res) {
+    res.render("index");
+});
+
 app.get("/scrape", function(req, res) {
     axios.get("http://espn.com").then(function(response) {
         var result = {};
