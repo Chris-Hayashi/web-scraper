@@ -63,23 +63,13 @@ app.get("/scrape", function(req, res) {
             console.log("original value of link: " + link);
             console.log("Title of that link: " + title);
 
-            if ((title !== null) && scraped.some(obj => obj.link !== link)) 
+            if ((title !== "") && (scraped.some(obj => obj.link !== String(link)) || !scraped.length)) 
                 scraped.push({
                     "link": link,
                     "title": title
                 });
-
-            // console.log("Here is the link to video: " + link);
-            // if(link !== undefined) {
-            //     if (link[0] === "h") videoScraper(link);
-            //     else if (link[1] === "/") {
-            //         link = ("http//www.espn.com").concat(link);
-            //         // console.log(link);
-            //         videoScraper(link);
-            //     }
-            // }
         });
-        console.log("Value of scraped array" + scraped);
+        console.log("Value of scraped array" + JSON.stringify(scraped));
     });
 });
 
