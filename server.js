@@ -93,16 +93,38 @@ app.get("/scrape", function(req, res) {
     });
 });
 
-app.get("/articles", function(req, res) {
-
+app.get("/sports", function(req, res) {
+    db.Sport.find({})
+        .then(function(dbSport) {
+            res.json(dbSport);
+        })
+        .catch(function(err) {
+            res.json(err);
+        });
 });
 
-app.get("/articles/:id", function(req, res) {
-
+app.get("/sports/:id", function(req, res) {
+    db.Sport.findOne({ _id: req.params.id })
+        .populate("note")
+        .then(function(dbSport) {
+            res.json(dbSport);
+        })
+        .catch(function(err) {
+            res.json(err);
+        })
 });
 
-app.post("/articles/:id", function(req, res) {
-
+app.post("/sports/:id", function(req, res) {
+    db.Note.create(req.body)
+        .then(function(dbNote) {
+            return db.Sport.findOneAndUpdate({ _id: req.params.id}, { note: dbNote._id}, { new: true});
+        })
+        .then(function(dbSport) {
+            res.json(dbSport);
+        })
+        .catch(function(err) {
+            res.json(err);
+        });
 });
 
 
