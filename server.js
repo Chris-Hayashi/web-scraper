@@ -25,7 +25,7 @@ app.use(express.static("public"));
 //Connect to mongoose
 const MONGODB_URI = process.env.MONGODB_URI || 
                   "mongodb://localhost/mongoHeadlines";
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+mongoose.connect(MONGODB_URI, { useUnifiedTopology: true, useNewUrlParser: true });
 
 //Set Handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
