@@ -13,7 +13,7 @@ const db = require("./models");
 //Initializing express
 const app = express();
 
-// const PORT = 3000;
+const PORT = 3000;
 
 //Parse request body as JSON
 app.use(express.urlencoded({ extended: true}));
@@ -108,6 +108,6 @@ app.post("/articles/:id", function(req, res) {
 
 
 
-// app.listen(PORT, function() {
-//     console.log("App running on port " + PORT + "!");
-// });
+app.listen(PORT, function() {
+    console.log("App running on port " + PORT + "!");
+});
