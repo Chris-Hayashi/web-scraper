@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 //Connect to mongoose
-const MONGODB_URI = process.env.MONGODB_URI || 
+const MONGODB_URI = mongolab-acute-02616 || 
                   "mongodb://localhost/mongoHeadlines";
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
