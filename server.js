@@ -64,7 +64,7 @@ app.get("/scrape", function(req, res) {
                 //     "title": title
                 // });
                 if (title !== "" && link !== undefined &&
-                    !db.Sport.find({link: link}).limit(1).size()) {
+                    !db.Sport.find({title: title}).limit(1).size()) {
 
                 
                     result.link = link;
