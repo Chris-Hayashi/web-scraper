@@ -60,6 +60,7 @@ app.get("/scrape", function(req, res) {
             console.log("original value of link: " + link);
             console.log("Title of that link: " + title);
 
+
             // if ((title !== "") && (scraped.some(obj => obj.link !== String(link)) || !scraped.length)) {
 
             
@@ -67,11 +68,12 @@ app.get("/scrape", function(req, res) {
                 //     "link": link,
                 //     "title": title
                 // });
-                if (title !== "" && link !== undefined &&
-                    !db.Sport.find({title: title}).limit(1).size()) {
-
-                
-                    result.link = link;
+                if ((title !== "") && (link !== undefined)) {
+                    // !db.Sport.find({title: title}).limit(1).size()) {
+                    if (link[0] === "h")
+                        result.link = link;
+                    else if (link[0] === "/")
+                        result.link = "http://www.espn.com".concat(link);
                     result.title = title;
 
 
