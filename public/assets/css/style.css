@@ -24,3 +24,62 @@ body {
     font-size: 1.5rem;
 }
 
+.title {
+    max-width: 45vw;
+    /* position: absolute; */
+}
+
+#titleContainer {
+    /* position: absolute; */
+}
+
+#jumbotron {
+    width: 100vw;
+    height: 40vh;
+}
+
+#jumboContainer {
+    position: absolute;
+}
+
+#logoContainer {
+    position: relative;
+}
+#logos {
+    position: relative;
+    display: block;
+    margin-left: 4vw;
+}
+
+#espnLogo {
+    position: absolute;
+    margin-top: 7vh;
+    /* display: inline-block; */
+}
+
+#scraperLogo {
+    position: absolute;
+    /* display: inline-block; */
+    width: 50vw;
+    height: auto;
+    margin-top: 6vh;
+    margin-left: 6vw;
+    top: 10vh;
+}
+
+
+/* .ell {
+    position: absolute;
+} */
+
+/* #espnLogo {
+    position: relative;
+    display: inline-block;
+    float: left;
+} */
+
+
+/* #espnLogo {
+
+} */
+
