@@ -11,13 +11,13 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Saved Articles</a>
+            <a class="nav-link" id="saved" href="#">Saved Articles</a>
           </li>
           <li class="nav-item">
-            <button><a class="nav-link" id="scrape">Scrape Articles!</a></button>
+            <button id="scrape"><a class="nav-link">Scrape Articles!</a></button>
           </li>
           <li class="nav-item">
             <button><a class="nav-link" href="#">Clear Articles!</a></button>
@@ -57,32 +57,3 @@
   </div>
 
 </div>
-
-<div id="sports">
-  <h1>This tag is a test</h1>
-  {{!-- <img src="/assets/images/scraperLogo.png" id="scraperLogo" class="title title-logo"> --}}
-
-
-    {{#each sports}}
-
-      {{#unless saved}}
-      <center>
-        <div class="eachCard">
-          <div class="card w-75">
-          <div class="card-body">
-            {{!-- <h5 class="card-title">{{this.title}}</h5> --}}
-            <p class="card-text">{{this.title}}</p>
-            <button class="btn btn-primary" id="saveArticle">Save Article</a></button>
-          </div>
-        </div>
-      </center>
-      <br><br>
-      {{/unless}}
-
-    {{/each}}
-
-</div>
-
-
-
-

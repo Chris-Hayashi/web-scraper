@@ -2,6 +2,7 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const mongoose = require("mongoose");
+const util = require("util");
 
 //Scraping tools
 const axios = require("axios");
@@ -36,10 +37,12 @@ app.set("view engine", "handlebars");
 
 //ROUTES
 app.get("/", function(req, res) {
+    console.log("/ route is called");
     // res.render("index");
     db.Sport.find({})
         .then(function(dbSport) {
-            res.render("index", dbSport);
+            // console.log("Value of dbSport: " + dbSport);
+            res.render("index", {sports: dbSport});
         })
         .catch(function(err) {
             res.json(err);
@@ -53,6 +56,10 @@ app.get("/scrape", function(req, res) {
         console.log("axios is working");
         // console.log("Here is axios' response: " + response.data);
         const $ = cheerio.load(response.data);
+        
+        // console.log("# of entries: " + db.Sport.find({"title": title}).limit(1).size());
+
+        // console.log("# of entries: " + util.inspect(db.Sport.find({"link": "http://www.espn.com/video/clip?id=28675818"}).limit(1).size()));
 
         $(".video-play-button").each(function(i, element) {
             let link = $(this).attr("data-popup-href");
@@ -64,8 +71,8 @@ app.get("/scrape", function(req, res) {
                 .children(".contentItem__title")
                 .text();
 
-            console.log("original value of link: " + link);
-            console.log("Title of that link: " + title);
+            // console.log("original value of link: " + link);
+            // console.log("Title of that link: " + title);
 
 
             // if ((title !== "") && (scraped.some(obj => obj.link !== String(link)) || !scraped.length)) {
@@ -75,8 +82,9 @@ app.get("/scrape", function(req, res) {
                 //     "link": link,
                 //     "title": title
                 // });
-                if ((title !== "") && (link !== undefined)) {
-                    // !db.Sport.find({title: title}).limit(1).size()) {
+                // console.log("# of entries: " + db.Sport.find({"title": title})._fields);
+                if ((title !== "") && (link !== undefined) &&
+                    (db.Sport.find({"title": title})._fields === undefined)) {
                     if (link[0] === "h")
                         result.link = link;
                     else if (link[0] === "/")
@@ -87,7 +95,7 @@ app.get("/scrape", function(req, res) {
 
                     db.Sport.create(result)
                         .then(function(dbSport) {
-                            console.log("This is the sport added to db: " + dbSport);
+                            // console.log("This is the sport added to db: " + dbSport);
                         })
                         .catch(function(err) {
                             console.log(err);
@@ -96,15 +104,22 @@ app.get("/scrape", function(req, res) {
             // }
         });
         // console.log("Value of scraped array" + JSON.stringify(scraped));
-
-        res.render("index");
+        db.Sport.find({})
+        .then(function(dbSport) {
+            // console.log("Value of dbSport: " + dbSport);
+            res.render("index", {sports: dbSport});
+        })
+        .catch(function(err) {
+            res.json(err);
+        });
+        // res.render("index");
     });
 });
 
 app.get("/sports", function(req, res) {
     db.Sport.find({})
         .then(function(dbSport) {
-            res.render("index", dbSport);
+            res.render("saved", dbSport);
         })
         .catch(function(err) {
             res.json(err);

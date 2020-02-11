@@ -12,9 +12,9 @@ body {
     font-family: graffiti;
 }
 
-/* #main {
-    border: 5px solid white;
-} */
+#main {
+    display: block;
+}
 
 .navbar-brand {
     font-size: 2rem;
@@ -29,9 +29,9 @@ body {
     /* position: absolute; */
 }
 
-#titleContainer {
-    /* position: absolute; */
-}
+/* #titleContainer {
+    position: absolute;
+} */
 
 #jumbotron {
     width: 100vw;
@@ -72,6 +72,19 @@ body {
     filter: drop-shadow(5px 5px 5px #222);
 }
 
+#sports {
+    position: relative;
+    display: block;
+    margin-top: 40vh;
+    /* align-content: center; */
+}
+
+.eachCard {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+    height: 30vh;
+    width: auto;
+}
 
 /* .ell {
     position: absolute;
