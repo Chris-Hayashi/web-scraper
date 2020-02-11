@@ -1,11 +1,3 @@
-{{!-- <div class="jumbotron">
-
-  <h1 class="display-4">Image Scrapper</h1>
-  <hr class="my-4">
-  <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape</a>
-  <a class="btn btn-primary btn-lg" href="/view" role="button">View</a>
-  
-</div> --}}
 <div id="main">
 
   <div>
@@ -22,7 +14,7 @@
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <button><a src="/scrape">Scrape Articles!</a></button>
+            <button id="scrape"><a href="/scrape">Scrape Articles!</a></button>
           </li>
           <li class="nav-item">
             <button><a src="#">Clear Articles!</a></button>
@@ -35,8 +27,6 @@
     </nav>
 
   </div>
-
-  {{!-- <br><br> --}}
 
   <div class="title" id="titleContainer">
     {{!-- Title --}}
@@ -67,6 +57,18 @@
   </div>
 
 </div>
+
+<div id="sports">
+  {{#each sports}}
+    <div class="card w-75">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a href="#" class="btn btn-primary">Button</a>
+    </div>
+  {{/each}}
+</div>
+
 
 
 

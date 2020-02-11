@@ -36,7 +36,14 @@ app.set("view engine", "handlebars");
 
 //ROUTES
 app.get("/", function(req, res) {
-    res.render("index");
+    // res.render("index");
+    db.Sport.find({})
+        .then(function(dbSport) {
+            res.render("index", dbSport);
+        })
+        .catch(function(err) {
+            res.json(err);
+        });
 });
 
 app.get("/scrape", function(req, res) {
@@ -74,7 +81,7 @@ app.get("/scrape", function(req, res) {
                         result.link = link;
                     else if (link[0] === "/")
                         result.link = "http://www.espn.com".concat(link);
-                        
+
                     result.title = title;
 
 
@@ -90,14 +97,14 @@ app.get("/scrape", function(req, res) {
         });
         // console.log("Value of scraped array" + JSON.stringify(scraped));
 
-        res.send("Scrape Complete");
+        res.render("index");
     });
 });
 
 app.get("/sports", function(req, res) {
     db.Sport.find({})
         .then(function(dbSport) {
-            res.json(dbSport);
+            res.render("index", dbSport);
         })
         .catch(function(err) {
             res.json(err);
