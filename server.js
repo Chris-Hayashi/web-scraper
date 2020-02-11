@@ -74,6 +74,7 @@ app.get("/scrape", function(req, res) {
                         result.link = link;
                     else if (link[0] === "/")
                         result.link = "http://www.espn.com".concat(link);
+                        
                     result.title = title;
 
 
