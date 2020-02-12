@@ -135,7 +135,7 @@ app.put("/api/sports/:id", function(req, res) {
 app.post("/sports/:id", function(req, res) {
     db.Note.create(req.body)
         .then(function(dbNote) {
-            return db.Sport.findOneAndUpdate({ _id: req.params.id}, { note: dbNote._id}, { new: true});
+            return db.Sport.findOneAndUpdate({ _id: req.params.id}, { note: dbNote._id }, { new: true});
         })
         .then(function(dbSport) {
             res.json(dbSport);
