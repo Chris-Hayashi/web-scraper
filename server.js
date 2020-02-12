@@ -1,6 +1,7 @@
 //Import express, handlebars, and mongoose npm packages
 const express = require("express");
 const exphbs = require("express-handlebars");
+const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const util = require("util");
 
@@ -17,6 +18,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 //Parse request body as JSON
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
@@ -26,7 +28,7 @@ app.use(express.static("public"));
 //Connect to mongoose
 const MONGODB_URI = process.env.MONGODB_URI || 
                   "mongodb://localhost/mongoHeadlines";
-mongoose.connect(MONGODB_URI, { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect(MONGODB_URI, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false });
 
 //Set Handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
@@ -37,7 +39,7 @@ app.set("view engine", "handlebars");
 
 //ROUTES
 app.get("/", function(req, res) {
-    console.log("/ route is called");
+    // console.log("/ route is called");
     // res.render("index");
     db.Sport.find({})
         .then(function(dbSport) {
@@ -126,16 +128,33 @@ app.get("/sports", function(req, res) {
         });
 });
 
-app.get("/sports/:id", function(req, res) {
-    db.Sport.findOne({ _id: req.params.id })
-        .populate("note")
-        .then(function(dbSport) {
-            res.json(dbSport);
-        })
-        .catch(function(err) {
-            res.json(err);
-        })
+app.put("/api/sports/:id", function(req, res) {
+    console.log("api route called");
+    // console.log(("http://www.espn.com/video/clip?id=".concat(req.params.id)));
+    // db.Sport.findOneAndUpdate({ _id: "http://www.espn.com/video/clip?id=".concat(req.params.id)}, { saved: true }, function(error, edited) {
+    db.Sport.findOneAndUpdate({ _id: req.params.id}, {$set: { saved: true }}, function(error, edited) {
+        if (error) {
+            console.log(error);
+            res.send(error);
+          }
+          else {
+            // Otherwise, send the result of our update to the browser
+            // console.log(edited);
+            res.send(edited);
+          }
+    });
 });
+
+// app.get("/sports/:id", function(req, res) {
+//     db.Sport.findOne({ _id: req.params.id })
+//         .populate("note")
+//         .then(function(dbSport) {
+//             res.json(dbSport);
+//         })
+//         .catch(function(err) {
+//             res.json(err);
+//         })
+// });
 
 app.post("/sports/:id", function(req, res) {
     db.Note.create(req.body)

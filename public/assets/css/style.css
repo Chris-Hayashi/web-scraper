@@ -10,6 +10,7 @@
 body {
     background-image: linear-gradient(to right, #F53844, #42378F);
     font-family: graffiti;
+    overflow-x: hidden;
 }
 
 #main {

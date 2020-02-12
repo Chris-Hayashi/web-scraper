@@ -1,4 +1,4 @@
-<div id="main">
+{{!-- <div id="main">
 
   <div>
     {{!-- NavBar --}}
@@ -56,12 +56,13 @@
 
   </div>
 
-</div>
+</div> --}}
 
 <div id="sports">
-  <h1>This tag is a test</h1>
+  {{!-- <h1>This tag is a test</h1> --}}
   {{!-- <img src="/assets/images/scraperLogo.png" id="scraperLogo" class="title title-logo"> --}}
 
+    <br><br>
 
     {{#each sports}}
 
@@ -72,7 +73,7 @@
           <div class="card-body">
             {{!-- <h5 class="card-title">{{this.title}}</h5> --}}
             <p class="card-text">{{this.title}}</p>
-            <button class="btn btn-primary" id="saveArticle">Save Article</a></button>
+            <button class="btn btn-primary saveArticle" value={{this._id}}>Save Article</a></button>
           </div>
         </div>
       </center>

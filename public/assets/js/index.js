@@ -14,8 +14,21 @@ $("#saved").on("click", function(event) {
     });
 })
 
-$("#saveArticle").on("click", function(data) {
-    // $.ajax()
+$(".saveArticle").on("click", function(event) {
+    event.preventDefault();
+    console.log("saveArticle click event is working");
+    console.log("This.val(): " + $(this).val());
+    // $.getJSON("/sports/" + $(this).val().split("=")[1], function(data) {
+
+    // })
+    $.ajax({
+        url: "/api/sports/" + $(this).val(),
+        // url: "/scrape",
+        type: "PUT"
+    }).then(function(data) {
+        console.log("Response: " + JSON.stringify(data));
+        location.reload();
+    });
 });
 
 $("#scrape").on("click", function() {
@@ -23,7 +36,7 @@ $("#scrape").on("click", function() {
     console.log("scrape event listener is working correctly.");
     
     $.ajax({
-        url: "scrape", 
+        url: "/scrape", 
         type: "GET"
     }).then(function() {
         console.log("ajax funtion is working correctly");
