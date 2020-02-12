@@ -47,3 +47,14 @@ $("#scrape").on("click", function() {
         location.reload();
     });
 })
+
+$("#clear").on("click", function() {
+
+    $.ajax({
+        url: "/api/clear", 
+        type: "GET"
+    }).then(function() {
+        console.log("api/clear route call working correctly");
+        location.reload();
+    });
+})

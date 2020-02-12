@@ -118,15 +118,25 @@ app.get("/scrape", function(req, res) {
     });
 });
 
-app.get("/sports", function(req, res) {
+app.get("/saved", function(req, res) {
     db.Sport.find({})
         .then(function(dbSport) {
-            console.log("Value of dbSport: " + dbSport);
+            // console.log("Value of dbSport: " + dbSport);
             res.render("saved", {sports: dbSport});
         })
         .catch(function(err) {
             res.json(err);
         });
+});
+
+app.get("/api/clear", function(req, res) {
+    db.Sport.remove({}, function(err) {
+        if (err)
+            console.log(err);
+        else
+            console.log("Articles cleared");
+    });
+    // location.reload();
 });
 
 app.put("/api/sports/:id", function(req, res) {
