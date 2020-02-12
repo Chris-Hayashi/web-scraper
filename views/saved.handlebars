@@ -9,9 +9,10 @@
         <div class="eachCard">
           <div class="card w-75">
           <div class="card-body">
-            {{!-- <h5 class="card-title">{{this.title}}</h5> --}}
-            <p class="card-text">{{this.title}}</p>
-            <button class="btn btn-primary saveArticle" value={{this._id}}>Add Note</a></button>
+            <p class="card-text"><a href={{this.link}} style="color: inherit; text-docration: none;">{{this.title}}</a></p>
+            <button type="button" class="btn btn-primary addNote" data-toggle="modal" data-target="#notes" value={{this._id}}>
+              Add Note
+            </button>
           </div>
         </div>
       </center>
@@ -20,3 +21,32 @@
     {{/each}}
 
 </div>
+
+{{#each sports}}
+  {{!-- Modal --}}
+      <div class="modal" id="notes" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Notes For Article: {{this._id}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+
+              <form>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">New Note:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="saveNote" value={{this._id}}>Save Note</button>
+            </div>
+          </div>
+        </div>
+      </div>
+{{/each}}
