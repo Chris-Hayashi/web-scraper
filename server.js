@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 3000;
 
 //Parse request body as JSON
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.urlencoded({ extended: true}));
+// app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
 //Make public a static folder
@@ -121,7 +121,8 @@ app.get("/scrape", function(req, res) {
 app.get("/sports", function(req, res) {
     db.Sport.find({})
         .then(function(dbSport) {
-            res.render("saved", dbSport);
+            console.log("Value of dbSport: " + dbSport);
+            res.render("saved", {sports: dbSport});
         })
         .catch(function(err) {
             res.json(err);

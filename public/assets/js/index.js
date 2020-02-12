@@ -6,13 +6,17 @@
 
 // console.log
 
-$("#saved").on("click", function(event) {
-    event.preventDefault();
+// $("#saved").on("click", function(event) {
+//     event.preventDefault();
 
-    $.get("/saved", function(data) {
-        console.log("Data: " + data);
-    });
-})
+//     $.ajax({
+//         url: "/sports",
+//         // url: "/scrape",
+//         type: "GET"
+//     }).then(function(data) {
+//         // console.log("Response: " + JSON.stringify(data));
+//     });
+// })
 
 $(".saveArticle").on("click", function(event) {
     event.preventDefault();
