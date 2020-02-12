@@ -10,7 +10,7 @@
           <div class="card w-75">
           <div class="card-body">
             <p class="card-text"><a href={{this.link}} style="color: inherit; text-docration: none;">{{this.title}}</a></p>
-            <button type="button" class="btn btn-primary addNote" data-toggle="modal" data-target="#notes" value={{this._id}}>
+            <button type="button" class="btn btn-primary addNote" data-toggle="modal" data-target="#noteModal" value={{this._id}}>
               Add Note
             </button>
           </div>
@@ -23,7 +23,7 @@
 </div>
 
   {{!-- Modal --}}
-      <div class="modal" id="notes" tabindex="-1" role="dialog">
+      <div class="modal" id="noteModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -33,14 +33,19 @@
               </button>
             </div>
             <div class="modal-body">
-
-
               <form>
                 <div class="form-group">
                   <label for="newNote" class="col-form-label">New Note:</label>
                   <textarea class="form-control" id="newNote"></textarea>
                 </div>
               </form>
+
+              <hr>
+
+              <label for="popNotes" class="col-form-label">Saved Notes:</label>
+              <div id="popNotes">
+
+              </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" id="saveNote">Save Note</button>

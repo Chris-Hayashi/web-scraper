@@ -86,7 +86,10 @@ body {
     height: 30vh;
     width: auto;
 }
-
+/* 
+.thisNote {
+    display: inline-block;
+} */
 /* .ell {
     position: absolute;
 } */

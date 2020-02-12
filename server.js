@@ -121,16 +121,16 @@ app.put("/api/sports/:id", function(req, res) {
     });
 });
 
-// app.get("/sports/:id", function(req, res) {
-//     db.Sport.findOne({ _id: req.params.id })
-//         .populate("note")
-//         .then(function(dbSport) {
-//             res.json(dbSport);
-//         })
-//         .catch(function(err) {
-//             res.json(err);
-//         })
-// });
+app.get("/sports/:id", function(req, res) {
+    db.Sport.findOne({ _id: req.params.id })
+        .populate("note")
+        .then(function(dbSport) {
+            res.json(dbSport);
+        })
+        .catch(function(err) {
+            res.json(err);
+        })
+});
 
 app.post("/sports/:id", function(req, res) {
     db.Note.create(req.body)
