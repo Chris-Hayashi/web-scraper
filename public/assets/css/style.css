@@ -1,8 +1,3 @@
-@font-face {
-    font-family: "graffiti";
-    src: url("fonts/Hoodson\ free\ font\ .ttf");
-}
-
 body {
     background-image: linear-gradient(to right, #F53844, #42378F);
     font-family: 'Times New Roman', Times, serif;
@@ -14,11 +9,11 @@ body {
 }
 
 .navbar-brand {
-    font-size: 2rem;
+    font-size: 1.7rem;
 }
 
 .nav-item {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .title {
