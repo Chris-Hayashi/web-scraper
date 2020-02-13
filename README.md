@@ -20,12 +20,38 @@ Visual Studio Code, Git Bash, Heroku, MongoDB, Google Chrome
 
 ### Models
 
-### Sport.js
+#### Sport.js
 ![Sport1](public/assets/images/Sport1.png)
 
-#### 
+#### Note.js
 ![Note1](public/assets/images/Note1.png)
 
 #### index.js
 ![index1](public/assets/images/index1.png)
 
+### Public/Assets
+
+#### style.css
+![css1](public/assets/images/css1.png)
+![css2](public/assets/images/css2.png)
+
+#### index.js
+![js1](public/assets/images/js1.png)
+![js2](public/assets/images/js2.png)
+![js3](public/assets/images/js3.png)
+
+### Views
+
+#### main.handlebars
+![main1](public/assets/images/main1.png)
+
+#### navbar.handlebars
+![navbar1](public/assets/images/navbar1.png)
+![navbar2](public/assets/images/navbar2.png)
+
+#### index.handlebars
+![indexhbs](public/assets/images/indexhbs.png)
+
+#### saved.handlebars
+![saved1](public/assets/images/saved1.png)
+![saved2](public/assets/images/saved2.png)
