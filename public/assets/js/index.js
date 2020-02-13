@@ -1,6 +1,6 @@
 $(".saveArticle").on("click", function(event) {
     event.preventDefault();
-    
+
     $.ajax({
         url: "/api/sports/" + $(this).val(),
         type: "PUT"
