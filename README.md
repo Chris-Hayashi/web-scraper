@@ -16,4 +16,16 @@ Visual Studio Code, Git Bash, Heroku, MongoDB, Google Chrome
 
 ![demo](public/assets/images/demo.gif)
 
+## Code Screenshots
+
+### Models
+
+### Sport.js
+![Sport1](public/assets/images/Sport1.png)
+
+#### 
+![Note1](public/assets/images/Note1.png)
+
+#### index.js
+![index1](public/assets/images/index1.png)
 
