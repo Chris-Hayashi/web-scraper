@@ -18,10 +18,10 @@ var SportSchema = new Schema({
         type: Boolean,
         default: false
     },
-    note: {
+    note: [{
         type: Schema.Types.ObjectId,
         ref: "Note"
-    }
+    }]
 });
 
 var Sport = mongoose.model("Sport", SportSchema);

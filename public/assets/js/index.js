@@ -48,20 +48,24 @@ $(".addNote").on("click", function() {
         console.log("Data from saved notes: " + JSON.stringify(data));
         const notes = $("#popNotes");
 
-        if (data.note) {
-            notes.append("<div class='card'>" +
-                            "<div class='card-body'>" + 
-                                data.note.body +
-                            "</div>" +
-                            // "<div class='thisNote deleteNote'>" + 
-                            //     "X" + 
-                            // "</div>" + 
-                        "</div>"
-            );
+        if (data[0].note.length !== 0) {
+            for (var i = 0; i < data[0].note.length; i++) {
+
+                
+                notes.append("<div class='card'>" +
+                                "<div class='card-body'>" + 
+                                    data[0].note[i].body +
+                                "</div>" +
+                                // "<div class='thisNote deleteNote'>" + 
+                                //     "X" + 
+                                // "</div>" + 
+                            "</div>"
+                );
+            }
         } else {
             notes.append("<div class='card'><div class='card-body'>" + "There are no notes for this article" +"</div></div>");
-            // notes.append
         }
+        // location.reload();
 
 
 
@@ -90,5 +94,6 @@ $("#saveNote").on("click", function() {
         }).then(function(data) {
             // console.log("Data from save note: " +  JSON.stringify(data));
             note.val("");
+            console.log("data from save note: " + JSON.stringify(data));
         });
 });

@@ -55,8 +55,8 @@ app.get("/scrape", function(req, res) {
 
         $(".video-play-button").each(function(i, element) {
             let link = $(this).attr("data-popup-href");
-            // if (link !== undefined)
-            var title = $(this).parentsUntil(".contentItem")
+
+            const title = $(this).parentsUntil(".contentItem")
                 .children(".contentItem__content")
                 .children(".contentItem__contentWrapper")
                 .children(".contentItem__titleWrapper")
@@ -82,6 +82,46 @@ app.get("/scrape", function(req, res) {
                 }
 
         });
+
+        $(".contentItem__padding").each(function(i, element) {
+            let link = $(this).attr("href");
+
+            const title = $(this).children("contentItem__contentWrapper")
+                .children("contentItem__titleWrapper")
+                .children("contentItem__title")
+                .text();
+
+            // var count = 1;
+
+            // count = db.Sport.countDocuments({});
+            // db.Sport.countDocuments({title: this.title}, function(err, quantity) {
+            //     if (err) console.log(err);
+            //     else{
+            //         count = quantity;
+            //         console.log("Count: " + quantity);
+            //     }
+            // });
+
+
+
+            if ((title !== "") && (link !== undefined)) {
+
+                if (link[0] === "h")
+                    result.link = link;
+                else if (link[0] === "/")
+                    result.link = "http://www.espn.com".concat(link);
+
+                result.title = title;
+
+                db.Sport.create(result)
+                        .then(function(dbSport) {
+                        })
+                        .catch(function(err) {
+                            console.log(err);
+                    });
+            }
+
+        });
         db.Sport.find({})
         .then(function(dbSport) {
             res.render("index", {sports: dbSport});
@@ -103,7 +143,7 @@ app.get("/saved", function(req, res) {
 });
 
 app.get("/api/clear", function(req, res) {
-    db.Sport.remove({}, function(err) {
+    db.Sport.deleteMany({}, function(err) {
         if (err)
             console.log(err);
     });
@@ -122,9 +162,10 @@ app.put("/api/sports/:id", function(req, res) {
 });
 
 app.get("/sports/:id", function(req, res) {
-    db.Sport.findOne({ _id: req.params.id })
+    db.Sport.find({ _id: req.params.id })
         .populate("note")
         .then(function(dbSport) {
+            console.log(dbSport);
             res.json(dbSport);
         })
         .catch(function(err) {
@@ -135,7 +176,7 @@ app.get("/sports/:id", function(req, res) {
 app.post("/sports/:id", function(req, res) {
     db.Note.create(req.body)
         .then(function(dbNote) {
-            return db.Sport.findOneAndUpdate({ _id: req.params.id}, { note: dbNote._id }, { new: true});
+            return db.Sport.findOneAndUpdate({ _id: req.params.id}, {$push: { note: dbNote._id }}, { new: true});
         })
         .then(function(dbSport) {
             res.json(dbSport);
