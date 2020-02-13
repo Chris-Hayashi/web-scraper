@@ -38,7 +38,6 @@ app.set("view engine", "handlebars");
 app.get("/", function(req, res) {
     db.Sport.find({})
         .then(function(dbSport) {
-            // console.log("Value of dbSport: " + dbSport);
             res.render("index", {sports: dbSport});
         })
         .catch(function(err) {
@@ -50,7 +49,6 @@ app.get("/scrape", function(req, res) {
     axios.get("http://espn.com").then(function(response) {
         var result = {};
 
-        // console.log("Here is axios' response: " + response.data);
         const $ = cheerio.load(response.data);
 
         $(".video-play-button").each(function(i, element) {
@@ -90,19 +88,6 @@ app.get("/scrape", function(req, res) {
                 .children("contentItem__titleWrapper")
                 .children("contentItem__title")
                 .text();
-
-            // var count = 1;
-
-            // count = db.Sport.countDocuments({});
-            // db.Sport.countDocuments({title: this.title}, function(err, quantity) {
-            //     if (err) console.log(err);
-            //     else{
-            //         count = quantity;
-            //         console.log("Count: " + quantity);
-            //     }
-            // });
-
-
 
             if ((title !== "") && (link !== undefined)) {
 
@@ -152,7 +137,6 @@ app.get("/api/clear", function(req, res) {
 app.put("/api/sports/:id", function(req, res) {
     db.Sport.findOneAndUpdate({ _id: req.params.id}, {$set: { saved: true }}, function(error, edited) {
         if (error) {
-            console.log(error);
             res.send(error);
           }
           else {
@@ -165,7 +149,6 @@ app.get("/sports/:id", function(req, res) {
     db.Sport.find({ _id: req.params.id })
         .populate("note")
         .then(function(dbSport) {
-            console.log(dbSport);
             res.json(dbSport);
         })
         .catch(function(err) {
@@ -185,10 +168,6 @@ app.post("/sports/:id", function(req, res) {
             res.json(err);
         });
 });
-
-
-
-
 
 
 app.listen(PORT, function() {

@@ -3,13 +3,9 @@
     src: url("fonts/Hoodson\ free\ font\ .ttf");
 }
 
-/* html {
-    font-family: graffiti;
-} */
-
 body {
     background-image: linear-gradient(to right, #F53844, #42378F);
-    font-family: graffiti;
+    font-family: 'Times New Roman', Times, serif;
     overflow-x: hidden;
 }
 
@@ -27,12 +23,7 @@ body {
 
 .title {
     max-width: 45vw;
-    /* position: absolute; */
 }
-
-/* #titleContainer {
-    position: absolute;
-} */
 
 #jumbotron {
     width: 100vw;
@@ -50,7 +41,6 @@ body {
     position: relative;
     display: block;
     margin-left: 4vw;
-    /* text-shadow: 2px 2px 5px black; */
 }
 
 #espnLogo {
@@ -58,12 +48,10 @@ body {
     margin-top: 7vh;
     -webkit-filter: drop-shadow(5px 5px 5px #222);
     filter: drop-shadow(5px 5px 5px #222);
-    /* display: inline-block; */
 }
 
 #scraperLogo {
     position: absolute;
-    /* display: inline-block; */
     width: 50vw;
     height: auto;
     margin-top: 6vh;
@@ -77,7 +65,6 @@ body {
     position: relative;
     display: block;
     margin-top: 40vh;
-    /* align-content: center; */
 }
 
 .eachCard {
@@ -86,22 +73,3 @@ body {
     height: 30vh;
     width: auto;
 }
-/* 
-.thisNote {
-    display: inline-block;
-} */
-/* .ell {
-    position: absolute;
-} */
-
-/* #espnLogo {
-    position: relative;
-    display: inline-block;
-    float: left;
-} */
-
-
-/* #espnLogo {
-
-} */
-
